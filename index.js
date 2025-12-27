@@ -1,6 +1,6 @@
+let fileSys = require("fs")
 let express = require("express");
 let data = require("./MOCK_DATA.json")
-let filesys= require("fs")
 let app = express();
 let PORT = 8500;
 
@@ -15,20 +15,41 @@ app.get("/api/userData",(req,res)=>{
 })
 
 app.get("/userData/:idName",(req,res)=>{
-   let userId = req.params.idName;
+   let userId = Number(req.params.idName);
    let result= data.find(userEle => userEle.id === userId)
    return res.json(result)
 })
 
 //userSend the data
 app.use(express.urlencoded({extended:false}))
+app.use(express.json());
 app.post("/api/userData",(req,res)=>{
    let receiveData = req.body;
    console.log(receiveData)
    data.push({...receiveData, id:data.length+1});
-   filesys.writeFile("./MOCK_DATA.json",JSON.stringify(data),(err,data)=>{
+   fileSys.writeFile("./MOCK_DATA.json",JSON.stringify(data),(err,data)=>{
       return res.send("done");
    })
+})
+
+// patch request
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+app.patch("/api/userData/:id",(req,res)=>{
+   let patchId=Number(req.params.id);
+   // let modify =data.find(ele =>  ele.id===patchId)
+   // modify.first_name = req.body.first_name;
+   // modify.last_name = req.body.first_name;
+   data.forEach(element => {
+      if(element.id === patchId){
+         element.first_name =req.body.first_name;
+         element.last_name =req.body.last_name;
+      }
+   }
+)
+fileSys.writeFile("./MOCK_DATA.json",JSON.stringify(data),()=>{})
+console.log(data)
+return res.send("done")
 })
 
 app.listen(PORT,()=>{
