@@ -1,5 +1,6 @@
 let express = require("express");
 let data = require("./MOCK_DATA.json")
+let filesys= require("fs")
 let app = express();
 let PORT = 8500;
 
@@ -17,6 +18,17 @@ app.get("/userData/:idName",(req,res)=>{
    let userId = req.params.idName;
    let result= data.find(userEle => userEle.id === userId)
    return res.json(result)
+})
+
+//userSend the data
+app.use(express.urlencoded({extended:false}))
+app.post("/api/userData",(req,res)=>{
+   let receiveData = req.body;
+   console.log(receiveData)
+   data.push({...receiveData, id:data.length+1});
+   filesys.writeFile("./MOCK_DATA.json",JSON.stringify(data),(err,data)=>{
+      return res.send("done");
+   })
 })
 
 app.listen(PORT,()=>{
