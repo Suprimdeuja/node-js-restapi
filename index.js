@@ -4,6 +4,23 @@ let data = require("./MOCK_DATA.json")
 let app = express();
 let PORT = 8500;
 
+
+//middleware
+app.use(express.urlencoded({extended:false}))
+app.use(express.json());
+
+
+app.use((req,res,next)=>{
+    console.log("middleware 1")
+    next();
+})
+
+app.use((req,res,next)=>{
+    req.username="suprim"
+    console.log("middleware 2")
+    res.end("noooo")
+})
+
 //userData in ul form
 app.get("/userData",(req,res)=>{
    let result =data.map(userData => `<ul><li>${userData.first_name}</li></ul>`).join("")
@@ -21,8 +38,7 @@ app.get("/userData/:idName",(req,res)=>{
 })
 
 //userSend the data
-app.use(express.urlencoded({extended:false}))
-app.use(express.json());
+
 app.post("/api/userData",(req,res)=>{
    let receiveData = req.body;
    console.log(receiveData)
