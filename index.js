@@ -52,6 +52,18 @@ console.log(data)
 return res.send("done")
 })
 
+// delete
+app.delete("/api/userData/:id",(req,res)=>{
+   let patchId=Number(req.params.id);
+   console.log(patchId)
+   data.forEach(element =>{
+   if(element.id === patchId){
+      data.splice(patchId-1,patchId);
+      fileSys.writeFile("./MOCK_DATA.json",JSON.stringify(data),()=>{})
+   }
+   })
+})
+
 app.listen(PORT,()=>{
     console.log("Server has been started")
 })

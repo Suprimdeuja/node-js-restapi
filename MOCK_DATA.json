@@ -1,58 +1,9 @@
 [
     {
-        "id": 1,
-        "first_name": "handsome",
-        "last_name": "hehe",
-        "email": "ckyston0@infoseek.co.jp",
-        "gender": "Bigender"
-    },
-    {
         "id": 2,
         "first_name": "Harris",
         "last_name": "Kenington",
         "email": "hkenington1@usnews.com",
-        "gender": "Male"
-    },
-    {
-        "id": 3,
-        "first_name": "Renell",
-        "last_name": "Shurville",
-        "email": "rshurville2@addtoany.com",
-        "gender": "Female"
-    },
-    {
-        "id": 4,
-        "first_name": "Emlyn",
-        "last_name": "Semorad",
-        "email": "esemorad3@google.com.hk",
-        "gender": "Male"
-    },
-    {
-        "id": 5,
-        "first_name": "Alexia",
-        "last_name": "Valentin",
-        "email": "avalentin4@twitpic.com",
-        "gender": "Female"
-    },
-    {
-        "id": 6,
-        "first_name": "Pattie",
-        "last_name": "Gaitskill",
-        "email": "pgaitskill5@blogger.com",
-        "gender": "Male"
-    },
-    {
-        "id": 7,
-        "first_name": "Silvio",
-        "last_name": "Gregs",
-        "email": "sgregs6@dmoz.org",
-        "gender": "Male"
-    },
-    {
-        "id": 8,
-        "first_name": "Nial",
-        "last_name": "Jonah",
-        "email": "njonah7@oracle.com",
         "gender": "Male"
     },
     {
